@@ -1,1 +1,1 @@
-flask --app quotes --debug run
+py -m flask --app quotes --debug run

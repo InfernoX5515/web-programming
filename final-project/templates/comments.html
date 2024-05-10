@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    </head>
+    <body>
+        <h1>Quote Comments</h1>
+        <hr>
+        <table>
+            <tr>
+                <td>
+                    [{{data["owner"]}}]
+                </td>
+                <td>
+                    {{data["text"]}}
+                </td>
+                <td>
+                    <em>--</em>
+                    <em>{{data["author"]}}</em>
+                </td>
+            </tr>
+        </table>
+        <hr>
+        <h2>Comments</h2>
+        <table>
+        {% if quoteComments|length > 1 %}
+            {% for item in quoteComments %}
+                <tr>
+                    <td>
+                        [{{item["poster"]}}]
+                    </td>
+                    <td>
+                        {{item["text"]}}
+                    </td>
+                    <td>
+                        {% if user == item["poster"] or user == data["owner"]%}
+                            <a href="/comments/{{data['_id']}}/delete/{{item['_id']}}"><i class="material-icons">delete</i></a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+
+        {% else %}
+            <tr>
+                <td>
+                    No comments.
+                </td>
+            </tr>
+        {% endif %}
+        </table>
+        <br>
+        <hr/>
+        <h3>Add Comment:</h3>
+        <form action="/comments/{{data['_id']}}/add" method="POST">
+            <textarea id="text" name="text" cols="40" rows="5"></textarea>
+            <button type="submit">Post Comment</button>
+            <br>
+        </form>
+        <hr/>
+        <a href="/quotes">Back</a>
+        <hr/>
+        User = {{user}} (<a href="/logout">Logout</a>)
+    </body>
+</html>

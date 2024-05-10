@@ -17,8 +17,7 @@
                         <label for="author">Author</label>
                     </td>
                     <td>
-                        <input type="text" id="author" name="author"
-                        value="{{data["author"]}}"/>        
+                        <input type="text" id="author" name="author" value="{{data["author"]}}"/>
                     </td>
                 </tr>
                 <tr>
@@ -26,7 +25,15 @@
                         <label for="public">Public?</label>
                     </td>
                     <td>
-                        <input type="checkbox" id="public" name="public"/>        
+                        <input type="checkbox" id="public" name="public" {{public}}/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="comments">Allow Comments?</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="comments" name="comments" {{comments}}/>
                     </td>
                 </tr>
             </table>

@@ -1,0 +1,38 @@
+<head>
+    <title>Flask Vue</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="{{ url_for('static', filename='login-vue.js') }}"></script>
+
+    <h1>Please Login</h1>
+    <form>
+        <table>
+            <tr>
+                <td>
+                    <label for="User">User</label>
+                </td>
+                <td>
+                    <input type="text" id="user" name="user" v-model="user" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="password">Password</label>
+                </td>
+                <td>
+                    <input type="text" id="password" name="password" v-model="password" />
+                </td>
+            </tr>
+        </table>
+        <button type="button" @click="handleAddSubmit">Submit</button>
+        <br>
+        <a href="/">Cancel</a>
+    </form>
+    <a href="/register">Not registered? Sign up now!</a>
+</body>
